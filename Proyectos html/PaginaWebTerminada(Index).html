@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Web</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: -10;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-image: url(https://img3.wallspic.com/crops/2/8/3/6/6/166382/166382-galaxia_marshmello-musica_electronica_de_baile-prendas_de_vestir_exteriores-morado-fedora-1920x1080.jpg);
+       background-repeat:no-repeat;
+       background-position: center;
+       background-size: cover;
+       background-attachment: fixed;
+       font-size: 18px;
+    }
+    /* Estilo del <nav> */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #3333339f;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ff9900;
+    }
+    /* Estilo de cada sección */
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+   
+    h1 {
+      margin: 0;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+        margin: 0;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: #ddd;
+    }
+    /* Estilo del botón flotante */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff9900;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      text-align: center;
+      line-height: 60px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .back-to-top:hover {
+      background: #e68a00;
+      transform: scale(1.1);
+    }
+    /* Responsividad para dispositivos pequeños */
+    @media (max-width: 600px) {
+      .back-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        line-height: 50px;
+      }
+    }
+    /* Estilo del footer */
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+    footer a {
+      color: #ff9900;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .calculator {
+      border: 1px solid #cccccc;
+      padding: 20px;
+      border-radius: 10px;
+      width: 50%;
+      margin: 50px auto;
+      background-color: #222222c2;
+    }
+    #display {
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #e6dada;
+      border-radius: 5px;
+      background-color: #f3ebeb;
+    }
+    .button {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+      margin: 5px;
+      cursor: pointer;
+      background-color: #e0e0e085;
+      border: none;
+      border-radius: 5px;
+    }
+    .button:active {
+      background-color: #e6d3d3;
+    }
+    .row {
+      display: flex;
+    }
+    .todo-container {
+            background-color: #ffffff3d;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(233, 220, 220, 0.1);
+            width: 500px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .todo-container input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .todo-container button {
+            padding: 10px;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .add-btn {
+            background-color: #4caf50;
+        }
+
+        .remove-btn {
+            background-color: #f44336;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #e0e0e0;
+            padding: 30px;
+            margin: 6px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            background-color: #a5d6a7;
+        }
+
+        .celebration {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #4caf50;
+        }
+
+        .celebration.show {
+            display: block;
+        }
+        p {
+            color: #ddd;
+        }
+        .social-icons {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 24px;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3);
+      color: #ff7f50;
+    }
+    textarea {
+            width: 500px; /* Ancho del textarea */
+            height: 300px; /* Altura del textarea */
+            background-color: #3a22728e; /* Color de fondo */
+            color: #e6e4e4; /* Color del texto */
+            font-family: Arial, sans-serif; /* Tipo de fuente */
+            font-size: 14px; /* Tamaño de la fuente */
+            border: 2px solid #007BFF; /* Borde con color */
+            border-radius: 5px; /* Esquinas redondeadas */
+            padding: 10px; /* Espaciado interno */
+            resize: none; /* Desactiva el redimensionamiento */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+        }
+        
+        /* Cambiar diseño cuando el textarea está enfocado */
+        textarea:focus {
+            outline: none; /* Elimina el borde por defecto */
+            border-color: #0056b3; /* Cambia el color del borde */
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Añade un efecto de enfoque */
+        }
+       .sinbordes {
+        border-collapse:collapse ;
+        border: none;
+       }
+  </style>
+</head>
+<body>
+  <!-- Menú de navegación -->
+  <nav>
+    <a href="#section1">Historia</a>
+    <a href="#section2">Canciones TOP</a>
+    <a href="#section3">Generos</a>
+    <a href="#section4">Wallpapers</a>
+    <a href="#section5">Musica nueva</a>
+    <a href="#section6">Calculadora</a>
+    <a href="#section7">Contactanos</a>
+    <a href="#section8">To Do</a>
+    <div style="float:left;" class="social-icons">
+        <a href="https://m.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/220px-2021_Facebook_icon.svg.png"width="30" height="30"></img></a>
+        <a href="https://x.com/?lang=es"><img src="https://cdn.icon-icons.com/icons2/4029/PNG/512/twitter_x_new_logo_x_rounded_icon_256078.png"width ="30" height="30"></img></a>
+        <a href="https://www.instagram.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"width="30" height="30"></img></a>
+      </div> 
+  </nav> 
+  <table>
+    <tr>
+        <td>
+            <marquee>
+                <img src="https://es.concerty.com/img/festival/logo/817.jpg"widht="300" height="300"></img>
+                <img src="https://images.prismic.io/garrix/64963df8-07e1-4406-94be-81bce19c81fc_AS9I8927+copy.jpg?auto=compress,format&rect=23,0,1453,1000&w=808&h=556"widht="300" height="300"></img>               
+                <img src="https://i.scdn.co/image/ab67616d0000b2730ae1aea7589b22d5879e0882"widht="300" height="300"></img>
+                <img src="https://www.dolby.com/siteassets/xf-site/artist-detail-pages/deadmau5-1-1.jpg"widht="300" height="300"></img>
+                <img src="https://runthetrap.com/wp-content/uploads/2021/10/csm_skrillex-umfk19b_152_12f6cb21c4.jpeg"widht="300" height="300"></img>
+                <img src="https://theabsolutgroup.com/wp-content/uploads/2022/05/tomorrowland.webp"widht="300" height="300"></img>
+            </marquee>
+        </td>
+    </tr>
+    </table>
+  <section id="section1">
+    <h1>Historia de la musica electrónica</h1>
+    <h3>Finales del siglo XIX principios de XX</h3>
+    <textarea>Aunque algunos afirman que el primer instrumento de música eléctrica, el Golden Dionysus, se desarrolló posiblemente en 1748, marcando el nacimiento de la música electrónica, es más probable que el género se originara, en el sentido más amplio, en el paso del siglo XIX hacia el XX. En esa época, la electrónica emergente permitió la experimentación con los sonidos y, posteriormente, con los dispositivos electrónicos. Como resultado, se desarrollaron varios instrumentos electrónicos, como el Telharmonium (un órgano eléctrico desarrollado en 1896), y más tarde, en las décadas de 1920 y 1930, el órgano Hammond (un órgano electrónico), el Ondes Martenot (un primer dispositivo electrónico que se tocaba con teclados o un anillo a lo largo de un cable), el Trautonium (un primer sintetizador electrónico) o el theremin (un invento electrónico desarrollado en 1930).
+
+        Estas innovaciones tempranas se utilizaron primero para demostraciones e interpretaciones públicas, ya que en la mayoría de los casos eran demasiado complejas, poco prácticas e incapaces de crear un sonido de cierta magnitud y profundidad. Más tarde, con la invención de los tubos de vacío, se pudieron desarrollar instrumentos más pequeños, amplificados y prácticos que fueron apareciendo en las nuevas composiciones.
+        
+        Un punto de inflexión para la industria musical en general fue la invención del fonógrafo (posteriormente conocido como gramófono) creado, de forma separada, por, Thomas Alva Edison y Emile Berliner alrededor de la década de 1870/1880. Los fonógrafos fueron el primer medio de grabación y reproducción de archivos de audio (los sonidos podían capturarse y guardarse para su uso futuro) y marcaron el inicio de la industria discográfica que conocemos hoy.
+        
+        </textarea>
+        <table>
+            <tr>
+               <td> <textarea>Primer instrumento electronico.  En el año 1600 fue cuando se comenzó a tratar el tema de la electricidad, pero no cobró vital importancia hasta 1660, cuando se inventó el generador eléctrico estático. Luego ya en el siguiente siglo (el XVIII) se descubrió la electricidad tal y como la conocemos hoy.
+
+                El primer instrumento eléctrico data de 1759
+                No se trata de la guitarra eléctrico, sino de un instrumento mucho menos usual, por llamarlo de alguna manera. Y es que es tan inusual que ni siquiera se llegó a actualizar nunca. Se creó un primer modelo y, a pesar de que se invirtió en mejorarlo, no se supo más. La primera unidad fabricada permanece en la Biblioteca Nacional de Francia.</textarea></td>
+                <td>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyjLKk7MGIDcMFZHvpYJU4zbxS4g7KAW_hDw&s"widht="50%" height="320"></img>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <iframe width="550" height="330" src="https://www.youtube.com/embed/IklMAeuPiU4?si=tWxSwulyEtBZh5Dt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </td>
+                <td><textarea>Primera cancion de musica electronica.  En 1954 Stockhausen compuso Elektronische Studie II la primera pieza electrónica en ser publicada como banda sonora. ​ Otros ejemplos significativos son Mixtur (1964)​ y Hymnen, dritte Region mit Orchester (1967).</textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea>El primer disc-jockey de radio del mundo fue Ray Newby, de Stockton (California). En 1909, a la edad de 16 años, Newby comenzó a reproducir discos de modo regular, gracias a la autorización del pionero de la radio Charles Doc Herrold.4​ Hacia 1910, los programas radiofónicos ya utilizaban tanto sonido pregrabado como en directo. En los primeros años de la radio, al programador y conductor no se le conocía todavía como disc-jockey. En los años 1920, se popularizaron los juke joint como lugares donde beber y bailar escuchando música de jukebox pregrabada. En 1927, Christopher Stone se convirtió en el primero locutor y programador de radio del Reino Unido para la emisora BBC. En 1929,Thomas Edison detuvo la producción de cilindros de fonógrafo, terminando con la rivalidad entre estos y los discos de pasta.</textarea>
+                </td>
+                <td>
+                <img src="https://news.djcity.com/latino/wp-content/sites/4/image1-17-1.png"widht="350" height="330"></img>
+            </td>
+            </tr>
+        </table>
+  </section>
+  <section id="section2">
+    
+    <h1>Top canciones de la historia</h1>
+    <p>TOP 1</p>
+    <img src="https://i.scdn.co/image/ab67616d0000b27363930afae902cae1ca1c65b9"width="600" height="300"></img>
+    <iframe src="https://embed.beatport.com/?id=3997064&type=release" width="100%" height="100" frameborder="0" scrolling="no" style="max-width:600px;"></iframe>
+    <p>TOP 2</p>
+        <img src="https://is1-ssl.mzstatic.com/image/thumb/Features124/v4/6b/a1/ce/6ba1cef3-ec21-096b-dd06-2397c7ab869e/dj.gjxdinxz.jpg/600x600bf-60.jpg"width="600" height="300"></img>
+        <iframe src="https://embed.beatport.com/?id=219960&type=release" width="100%" height="100" frameborder="0" scrolling="no" style="max-width:600px;"></iframe>
+<p>TOP 3</p>
+<img src="https://geo-media.beatport.com/image_size/1400x1400/0962d88a-f5fa-4e99-a7be-9d00c7eb050b.jpg"width="600"height="300"></img>
+<iframe src="https://embed.beatport.com/?id=1221643&type=release" width="100%" height="100" frameborder="0" scrolling="no" style="max-width:600px;"></iframe>
+    </section>
+  <section id="section3">
+    <h1>Generos en la Electronica</h1>
+    <h3>Dubstep</h3>
+    <img src="https://24.media.tumblr.com/334f80f602f62566385627b1319effbd/tumblr_mv59zshpWM1skambyo1_500.gif"widht="500"height="500"></img>
+    <a href="Index.html"><p>Entra a la pagina para ver mas sobre el Dupstep</p></a>
+    <h3>Deep House</h3>
+    <img src="https://img1.picmix.com/output/pic/normal/1/2/7/6/7056721_53fe6.gif"widht="500"height="500"></img>
+    <a href="Index1.html"><p>Entra a la pagina para ver mas sobre el Deep House</p></a>
+    <h3>BIGROOM House</h3>
+    <img src="https://i.ytimg.com/vi/Gu7Q4g0uoFU/maxresdefault.jpg"widht="500"height="500"></img>
+    <a href="Index2.html"><p>Entra a la pagina para ver mas sobre el BIGROOM House</p></a>
+<h3>Electro Trap</h3>
+    <img src="https://i1.sndcdn.com/artworks-000282182582-1yoec8-t500x500.jpg"widht="500"height="500"></img>
+    <a href="Index3.html"><p>Entra a la pagina para ver mas sobre el Electro Trap</p></a>
+<h3>Trance Electro</h3>
+    <img src="https://cdn.dribbble.com/users/1409719/screenshots/14581334/media/082f196a2dfd621b0fcc938ca818230e.gif"widht="500"height="500"></img>
+    <a href="Index4.html"><p>Entra a la pagina para ver mas sobre el Trance Electro</p></a>
+</section>
+  <section id="section4">
+    <h1>Wallpapers</h1>
+    <p>Toque las imagenes para descargarlas</p>
+    <table class="sinbordes">
+        <tr>
+            <td>
+                <a href="https://i1.sndcdn.com/artworks-000420911217-3xcl7c-t500x500.jpg"download></a>
+<img src="https://i1.sndcdn.com/artworks-000420911217-3xcl7c-t500x500.jpg"width="400"height="500"></img>
+            </td>
+            <td>
+                <img src=" "></img>
+            </td>
+            <td>
+                <a href="https://img.freepik.com/fotos-premium/reproductor-dj-mezclando-audio-musica-electronica-fiesta-club-nocturno-creado-tecnologia-ia-generativa_67092-4331.jpg?semt=ais_hybrid"download></a>
+                <img src="https://img.freepik.com/fotos-premium/reproductor-dj-mezclando-audio-musica-electronica-fiesta-club-nocturno-creado-tecnologia-ia-generativa_67092-4331.jpg?semt=ais_hybrid"width="400"height="500"></img>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src=" "></img>
+            </td>
+            <td>
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/75488260?h=f7a9de0093" width="400"height="500" frameborder="0"    allowfullscreen></iframe>
+            </td>
+            <td>
+                <img src=" "></img>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://i.pinimg.com/736x/28/be/2f/28be2f906e57b6307d64bfe598265b36.jpg"download></a>
+                <img src="https://i.pinimg.com/736x/28/be/2f/28be2f906e57b6307d64bfe598265b36.jpg"width="400"height="500"></img>
+            </td>
+            <td>
+                <img src=" "></img>
+            </td>
+            <td>
+                <a href="https://i.pinimg.com/736x/7c/3b/ef/7c3befd62713e1ebd37b53e3b975a8b6.jpg"download></a>
+                <img src="https://i.pinimg.com/736x/7c/3b/ef/7c3befd62713e1ebd37b53e3b975a8b6.jpg"width="400"height="500"></img>
+            </td>
+        </tr>
+    </table>
+  </section>
+  <section id="section5">
+    <h1>Musica nueva</h1>
+    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1934080199&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/san-sun-655953252" title="Synthra" target="_blank" style="color: #cccccc; text-decoration: none;">Synthra</a> · <a href="https://soundcloud.com/san-sun-655953252/nuzb-grx-empire-extended-mix" title="NUZB &amp; GRX - Empire (Extended Mix)" target="_blank" style="color: #cccccc; text-decoration: none;">NUZB &amp; GRX - Empire (Extended Mix)</a></div>
+  <p>Dale play para poder escuchar las canciones</p>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1972637043&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/arminvanbuuren" title="Armin van Buuren" target="_blank" style="color: #cccccc; text-decoration: none;">Armin van Buuren</a> · <a href="https://soundcloud.com/arminvanbuuren/viva-lopera" title="Viva l&#x27;Opera" target="_blank" style="color: #cccccc; text-decoration: none;">Viva l&#x27;Opera</a></div>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1986630739&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/alanwalker33319" title="Alan Walker" target="_blank" style="color: #cccccc; text-decoration: none;">Alan Walker</a> · <a href="https://soundcloud.com/alanwalker33319/dancing-in-love" title="Dancing in love" target="_blank" style="color: #cccccc; text-decoration: none;">Dancing in love</a></div>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1967418763&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/tiesto" title="Tiësto" target="_blank" style="color: #cccccc; text-decoration: none;">Tiësto</a> · <a href="https://soundcloud.com/tiesto/free-your-mind" title="Free Your Mind" target="_blank" style="color: #cccccc; text-decoration: none;">Free Your Mind</a></div>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1952107199&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/dimitrivangeliswyman" title="Dimitri Vangelis &amp; Wyman" target="_blank" style="color: #cccccc; text-decoration: none;">Dimitri Vangelis &amp; Wyman</a> · <a href="https://soundcloud.com/dimitrivangeliswyman/monsters-extended-version-feat" title="Monsters (Extended Version) [feat. Bjerke]" target="_blank" style="color: #cccccc; text-decoration: none;">Monsters (Extended Version) [feat. Bjerke]</a></div>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1945514947&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/lucatestamusic" title="Luca Testa" target="_blank" style="color: #cccccc; text-decoration: none;">Luca Testa</a> · <a href="https://soundcloud.com/lucatestamusic/luca-testa-tony-kay-small-town-boy-techno-remix" title="Luca Testa &amp; Tony Kay - Small Town Boy [Techno Remix]" target="_blank" style="color: #cccccc; text-decoration: none;">Luca Testa &amp; Tony Kay - Small Town Boy [Techno Remix]</a></div>
+  <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1982418099&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/marshmellomusic" title="marshmello" target="_blank" style="color: #cccccc; text-decoration: none;">marshmello</a> · <a href="https://soundcloud.com/marshmellomusic/raverepeater" title="Marshmello, Space Laces - Rave Repeater" target="_blank" style="color: #cccccc; text-decoration: none;">Marshmello, Space Laces - Rave Repeater</a></div>
+</section>
+  <section id="section6">
+    <h1>Electro Calculadora</h1>
+<!-- Calculadora -->
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="row">
+        <button class="button" onclick="clearDisplay()">C</button>
+        <button class="button" onclick="appendToDisplay('/')">/</button>
+        <button class="button" onclick="appendToDisplay('')"></button>
+        <button class="button" onclick="deleteLast()">←</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendToDisplay('7')">7</button>
+        <button class="button" onclick="appendToDisplay('8')">8</button>
+        <button class="button" onclick="appendToDisplay('9')">9</button>
+        <button class="button" onclick="appendToDisplay('-')">-</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendToDisplay('4')">4</button>
+        <button class="button" onclick="appendToDisplay('5')">5</button>
+        <button class="button" onclick="appendToDisplay('6')">6</button>
+        <button class="button" onclick="appendToDisplay('+')">+</button>
+    </div>
+    <div class="row">
+        <button class="button" onclick="appendToDisplay('1')">1</button>
+        <button class="button" onclick="appendToDisplay('2')">2</button>
+        <button class="button" onclick="appendToDisplay('3')">3</button>
+        <button class="button" onclick="calculateResult()">=</button>
+    </div>
+    <div class="row">
+        <button class="button" style="width: 145px;" onclick="appendToDisplay('0')">0</button>
+        <button class="button" onclick="appendToDisplay('.')">.</button>
+    </div>
+  </div>
+
+  </section>
+    <section id="section7" class="section7" style="background: linear-gradient(45deg, #25d36562, #128c7e6e); padding: 10px;">
+        <h1>Contactanos</h1>
+        <div class="contact-section">
+            <h2 class="contact-title">¡Contáctanos!</h2>
+            <p class="contact-text">
+                Si tienes alguna pregunta o necesitas ayuda, mándanos un mensaje por WhatsApp. Déjanos tus datos y te responderemos lo antes posible.
+            </p>
+            <a 
+                href="https://wa.me/59177715465?text=Hola,%20quiero%20más%20información!" 
+                class="whatsapp-button" 
+                target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+                Escríbenos por WhatsApp
+            </a>
+        </div>
+    </section>
+    
+    <style>
+    /* Estilos para la sección de contacto */
+    .contact-section {
+        padding: 50px 20px;
+        background-color: #25d365b9; /* Fondo verde de WhatsApp */
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin: 50px auto;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 8px;
+        color: #ffffff; /* Texto blanco para mayor contraste */
+    }
+    
+    .contact-title {
+        font-size: 24px;
+        color: #ffffff; /* Texto del título en blanco */
+        margin-bottom: 20px;
+    }
+    
+    .contact-text {
+        font-size: 16px;
+        color: #f0f0f0; /* Texto de párrafo en blanco/gris claro */
+        margin-bottom: 30px;
+    }
+    
+    .whatsapp-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #25D366;
+        background-color: #ffffff; /* Fondo blanco del botón */
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    
+    .whatsapp-button:hover {
+        background-color: #e6e6e6; /* Cambia el fondo al pasar el cursor */
+        transform: translateY(-3px);
+    }
+    
+    .whatsapp-button img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+    </style>
+  </section>
+  <h2>To Do</h2>
+  <p>Esta seccion sirve para lograr tener una mini agenda para recordar evento del dia</p>
+  <section id="section8" class="todo-container">
+    <h2>To Do UPDS</h2>
+        <ul id="task-list">
+            <li>Ir a la universidad <button class="remove-btn">Eliminar</button></li>
+            <li>Realizar tareas <button class="remove-btn">Eliminar</button></li>
+            <li>Estudiar media hora <button class="remove-btn">Eliminar</button></li>
+        </ul>
+
+        <input type="text" id="new-task" placeholder="Nueva actividad...">
+        <button class="add-btn" onclick="addTask()">Agregar actividad</button>
+
+        <div class="celebration" id="victory-message">¡Todas las actividades completadas!</div>
+    </section>
+
+<!-- Script JavaScript -->
+    <script>
+        const taskList = document.getElementById('task-list');
+        const victoryMessage = document.getElementById('victory-message');
+
+        // Agregar actividades
+        function addTask() {
+            const taskText = document.getElementById('new-task').value;
+            if (taskText.trim() === '') {
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.textContent = taskText;
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Eliminar';
+            removeBtn.className = 'remove-btn';
+            removeBtn.onclick = removeTask;
+            li.appendChild(removeBtn);
+            li.onclick = toggleComplete;
+
+            taskList.appendChild(li);
+            document.getElementById('new-task').value = '';
+
+            checkVictory();
+        }
+
+        // Eliminar actividades
+        function removeTask(event) {
+            event.target.parentElement.remove();
+            checkVictory();
+        }
+
+        // Completar actividades
+        function toggleComplete(event) {
+            if (event.target.tagName === 'LI') {
+                event.target.classList.toggle('completed');
+                checkVictory();
+            }
+        }
+
+        // Verificar si todas las actividades están completadas
+        function checkVictory() {
+            const tasks = taskList.getElementsByTagName('li');
+            const allCompleted = Array.from(tasks).every(task => task.classList.contains('completed'));
+
+            if (allCompleted && tasks.length > 0) {
+                victoryMessage.classList.add('show');
+            } else {
+                victoryMessage.classList.remove('show');
+            }
+        }
+    </script>
+
+  
+</section>
+
+  <!-- Botón flotante para regresar al inicio -->
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Todos los derechos reservados</p>
+    <p>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  
+  <script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function deleteLast() {
+        var display = document.getElementById('display').value;
+        document.getElementById('display').value = display.slice(0, -1);
+    }
+
+    function calculateResult() {
+        var display = document.getElementById('display').value;
+        try {
+            document.getElementById('display').value = eval(display);
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+  </script>
+</body>
+</html>
